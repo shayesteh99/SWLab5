@@ -2,7 +2,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import Parser.Parser;
+import parser.Parser;
 
 public class Main {
   public static void main(String[] args) {

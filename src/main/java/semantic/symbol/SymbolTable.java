@@ -1,8 +1,8 @@
 package semantic.symbol;
 
 
-import CodeGenerator.*;
-import ErrorHandler.ErrorHandler;
+import codegenerator.*;
+import errorhandler.ErrorHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;

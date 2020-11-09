@@ -1,8 +1,8 @@
-package Scanner;
+package scanner;
 
-import ErrorHandler.ErrorHandler;
-import Scanner.token.Token;
-import Scanner.type.Type;
+import errorhandler.ErrorHandler;
+import scanner.token.Token;
+import scanner.type.Type;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -8,4 +8,6 @@ public abstract class Address {
     public varType varType;
 
     public abstract String toString();
+
+
 }

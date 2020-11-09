@@ -12,8 +12,9 @@ public class Action {
   }
 
   public String toString() {
-    if (action.equals(act.accept))
+    if (action.equals(act.accept)) {
       return "acc";
+    }
     return action.toString().substring(0, 1) + number;
   }
 }

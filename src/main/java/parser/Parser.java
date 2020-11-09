@@ -10,7 +10,7 @@ import java.util.Stack;
 import Log.Log;
 import codeGenerator.CodeGenerator;
 import errorHandler.ErrorHandler;
-import scanner.lexicalAnalyzer;
+import scanner.LexicalAnalyzer;
 import scanner.token.Token;
 
 
@@ -40,7 +40,7 @@ public class Parser {
   }
 
   public void startParse(java.util.Scanner sc) {
-    lexicalAnalyzer lexicalAnalyzer = new lexicalAnalyzer(sc);
+    LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(sc);
     Token lookAhead = lexicalAnalyzer.getNextToken();
     boolean finish = false;
     Action currentAction;

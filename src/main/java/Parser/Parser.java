@@ -1,4 +1,4 @@
-package parser;
+package Parser;
 
 
 import java.io.IOException;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
 
-import Log.Log;
-import codeGenerator.CodeGenerator;
-import errorHandler.ErrorHandler;
-import scanner.LexicalAnalyzer;
-import scanner.token.Token;
+import Logger.Log;
+import CodeGenerator.CodeGenerator;
+import ErrorHandler.ErrorHandler;
+import Scanner.LexicalAnalyzer;
+import Scanner.token.Token;
 
 
 public class Parser {

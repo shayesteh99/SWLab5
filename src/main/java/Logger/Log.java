@@ -1,4 +1,4 @@
-package Log;
+package Logger;
 
 /**
  * Created by mohammad hosein on 6/29/2015.

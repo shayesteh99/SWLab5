@@ -1,4 +1,4 @@
-package codeGenerator;
+package CodeGenerator;
 
 public class ImmediateAddress extends Address{
     public ImmediateAddress(int num,varType varType) {

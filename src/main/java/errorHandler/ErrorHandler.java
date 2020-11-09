@@ -3,7 +3,7 @@ package errorHandler;
 /**
  * Created by Alireza on 6/28/2015.
  */
-public class ErrorHandler {
+public final class ErrorHandler {
     private static ErrorHandler instance;
     public boolean hasError = false;
 

@@ -5,7 +5,7 @@ package codegenerator;
  */
 public abstract class Address {
     public int num;
-    public varType varType;
+    public VarType varType;
 
     public abstract String toString();
 

@@ -103,7 +103,7 @@ public class Parser {
 
 
     }
-    if (!ErrorHandler.hasError)
+    if (!ErrorHandler.getInstance().hasError)
       cg.printMemory();
 
 

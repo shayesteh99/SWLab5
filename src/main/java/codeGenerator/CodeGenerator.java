@@ -215,7 +215,7 @@ public class CodeGenerator {
         String className = callStack.pop();
         try {
             symbolTable.getNextParam(className, methodName);
-            ErrorHandler.printError("The few argument pass for method");
+            ErrorHandler.getInstance().printError("The few argument pass for method");
         } catch (IndexOutOfBoundsException e) {}
             SymbolType s = symbolTable.getMethodReturnType(className, methodName);
             varType t = varType.valueOf(s.name());
@@ -240,14 +240,14 @@ public class CodeGenerator {
             varType t = varType.valueOf(s.type.name());
             Address param = ss.pop();
             if (param.varType != t) {
-                ErrorHandler.printError("The argument type isn't match");
+                ErrorHandler.getInstance().printError("The argument type isn't match");
             }
             memory.add3AddressCode(Operation.ASSIGN, param, new DirectAddress(s.address, t), null);
 
 //        symbolStack.push(className);
 
         } catch (IndexOutOfBoundsException e) {
-            ErrorHandler.printError("Too many arguments pass for method");
+            ErrorHandler.getInstance().printError("Too many arguments pass for method");
         }
         callStack.push(methodName);
 
@@ -259,7 +259,7 @@ public class CodeGenerator {
             Address s2 = ss.pop();
 //        try {
             if (s1.varType != s2.varType) {
-                ErrorHandler.printError("The type of operands in assign is different ");
+                ErrorHandler.getInstance().printError("The type of operands in assign is different ");
             }
 //        }catch (NullPointerException d)
 //        {
@@ -274,7 +274,7 @@ public class CodeGenerator {
         Address s1 = ss.pop();
 
         if (s1.varType != varType.Int || s2.varType != varType.Int) {
-            ErrorHandler.printError("In " + opp.name().toLowerCase() +  " two operands must be integer");
+            ErrorHandler.getInstance().printError("In " + opp.name().toLowerCase() +  " two operands must be integer");
         }
         memory.add3AddressCode(opp, s1, s2, temp);
         ss.push(temp);
@@ -312,7 +312,7 @@ public class CodeGenerator {
         Address s2 = ss.pop();
         Address s1 = ss.pop();
         if (s1.varType != s2.varType) {
-            ErrorHandler.printError("The type of operands in equal operator is different");
+            ErrorHandler.getInstance().printError("The type of operands in equal operator is different");
         }
         memory.add3AddressCode(Operation.EQ, s1, s2, temp);
         ss.push(temp);
@@ -323,7 +323,7 @@ public class CodeGenerator {
         Address s2 = ss.pop();
         Address s1 = ss.pop();
         if (s1.varType != varType.Int || s2.varType != varType.Int) {
-            ErrorHandler.printError("The type of operands in less than operator is different");
+            ErrorHandler.getInstance().printError("The type of operands in less than operator is different");
         }
         memory.add3AddressCode(Operation.LT, s1, s2, temp);
         ss.push(temp);
@@ -334,7 +334,7 @@ public class CodeGenerator {
         Address s2 = ss.pop();
         Address s1 = ss.pop();
         if (s1.varType != varType.Bool || s2.varType != varType.Bool) {
-            ErrorHandler.printError("In and operator the operands must be boolean");
+            ErrorHandler.getInstance().printError("In and operator the operands must be boolean");
         }
         memory.add3AddressCode(Operation.AND, s1, s2, temp);
         ss.push(temp);
@@ -346,7 +346,7 @@ public class CodeGenerator {
         Address s2 = ss.pop();
         Address s1 = ss.pop();
         if (s1.varType != varType.Bool) {
-            ErrorHandler.printError("In not operator the operand must be boolean");
+            ErrorHandler.getInstance().printError("In not operator the operand must be boolean");
         }
         memory.add3AddressCode(Operation.NOT, s1, s2, temp);
         ss.push(temp);
@@ -405,7 +405,7 @@ public class CodeGenerator {
         SymbolType t = symbolTable.getMethodReturnType(symbolStack.peek(), methodName);
         varType temp = varType.valueOf(t.name());
         if (s.varType != temp) {
-            ErrorHandler.printError("The type of method and return address was not match");
+            ErrorHandler.getInstance().printError("The type of method and return address was not match");
         }
         memory.add3AddressCode(Operation.ASSIGN, s, new IndirectAddress(symbolTable.getMethodReturnAddress(symbolStack.peek(), methodName), varType.Address), null);
         memory.add3AddressCode(Operation.JP, new DirectAddress(symbolTable.getMethodCallerAddress(symbolStack.peek(), methodName), varType.Address), null, null);

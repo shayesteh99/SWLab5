@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class LexicalAnalyzer {
 
-    private Matcher matcher;
+    private final Matcher matcher;
 
 
     public LexicalAnalyzer(java.util.Scanner sc) {
@@ -25,7 +25,6 @@ public class LexicalAnalyzer {
     }
 
     public Token getNextToken() {
-
         while (matcher.find()) {
             for (Type t : Type.values()) {
 
@@ -35,7 +34,7 @@ public class LexicalAnalyzer {
 
                     }
                     if(matcher.group(Type.ErrorID.name())!=null){
-                        ErrorHandler.printError("The id must start with character");
+                        ErrorHandler.getInstance().printError("The id must start with character");
                         break;
                     }
 

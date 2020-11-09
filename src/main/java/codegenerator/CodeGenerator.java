@@ -216,7 +216,9 @@ public class CodeGenerator {
         try {
             symbolTable.getNextParam(className, methodName);
             ErrorHandler.getInstance().printError("The few argument pass for method");
-        } catch (IndexOutOfBoundsException e) {}
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println(e.getStackTrace());
+        }
             SymbolType s = symbolTable.getMethodReturnType(className, methodName);
             VarType t = VarType.valueOf(s.name());
             Address temp = new DirectAddress(memory.getTemp(),t);

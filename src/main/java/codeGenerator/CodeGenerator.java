@@ -443,13 +443,7 @@ public class CodeGenerator {
         String methodName = symbolStack.pop();
         Address s = ss.pop();
         SymbolType t = symbolTable.getMethodReturnType(symbolStack.peek(), methodName);
-        varType temp = varType.Int;
-        switch (t) {
-            case Int:
-                break;
-            case Bool:
-                temp = varType.Bool;
-        }
+        varType temp = varType.valueOf(t.name());
         if (s.varType != temp) {
             ErrorHandler.printError("The type of method and return address was not match");
         }

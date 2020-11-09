@@ -60,13 +60,13 @@ public class CodeGenerator {
                 assign();
                 break;
             case 10:
-                add();
+                primaryOpp(Operation.ADD);
                 break;
             case 11:
-                sub();
+                primaryOpp(Operation.SUB);
                 break;
             case 12:
-                mult();
+                primaryOpp(Operation.MULT);
                 break;
             case 13:
                 label();
@@ -268,39 +268,15 @@ public class CodeGenerator {
             memory.add3AddressCode(Operation.ASSIGN, s1, s2, null);
 
     }
-
-    public void add() {
+    public void primaryOpp(Operation opp) {
         Address temp = new DirectAddress(memory.getTemp(), varType.Int);
         Address s2 = ss.pop();
         Address s1 = ss.pop();
 
         if (s1.varType != varType.Int || s2.varType != varType.Int) {
-            ErrorHandler.printError("In add two operands must be integer");
+            ErrorHandler.printError("In " + opp.name().toLowerCase() +  " two operands must be integer");
         }
-        memory.add3AddressCode(Operation.ADD, s1, s2, temp);
-        ss.push(temp);
-    }
-
-    public void sub() {
-        Address temp = new DirectAddress(memory.getTemp(), varType.Int);
-        Address s2 = ss.pop();
-        Address s1 = ss.pop();
-        if (s1.varType != varType.Int || s2.varType != varType.Int) {
-            ErrorHandler.printError("In sub two operands must be integer");
-        }
-        memory.add3AddressCode(Operation.SUB, s1, s2, temp);
-        ss.push(temp);
-    }
-
-    public void mult() {
-        Address temp = new DirectAddress(memory.getTemp(), varType.Int);
-        Address s2 = ss.pop();
-        Address s1 = ss.pop();
-        if (s1.varType != varType.Int || s2.varType != varType.Int) {
-            ErrorHandler.printError("In mult two operands must be integer");
-        }
-        memory.add3AddressCode(Operation.MULT, s1, s2, temp);
-//        memory.saveMemory();
+        memory.add3AddressCode(opp, s1, s2, temp);
         ss.push(temp);
     }
 

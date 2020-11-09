@@ -12,15 +12,9 @@ public class Action {
   }
 
   public String toString() {
-    switch (action) {
-      case accept:
-        return "acc";
-      case shift:
-        return "s" + number;
-      case reduce:
-        return "r" + number;
-    }
-    return action.toString() + number;
+    if (action.equals(act.accept))
+      return "acc";
+    return action.toString().substring(0, 1) + number;
   }
 }
 
